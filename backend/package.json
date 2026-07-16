@@ -5,7 +5,9 @@
   "main": "src/index.js",
   "scripts": {
     "start": "node src/index.js",
-    "dev": "node --watch src/index.js"
+    "dev": "node --watch src/index.js",
+    "test": "node test-e2e.js",
+    "lint": "find src -name '*.js' -exec node --check {} \\;"
   },
   "dependencies": {
     "bcrypt": "^5.1.1",

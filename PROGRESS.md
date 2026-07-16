@@ -1,6 +1,6 @@
 # PROGRESS.md — DESKA Implementation Tracker
 
-## Completed (34 tasks)
+## Completed (52 tasks)
 - [x] **Folder structure + meta files** (2026-07-15)
 - [x] **Backend: Express + MongoDB** — Server :4000, resilient startup. (2026-07-15)
 - [x] **Backend: User model** — 6 roles, 3 permission levels, 2 modes, 4 themes. (2026-07-15)
@@ -16,7 +16,8 @@
 - [x] **Backend: PUT /api/org** — Update org name, feature flags, branding, AI providers, lockdown, quota. (2026-07-15)
 - [x] **Backend: POST /auth/offboard** — Offboard users, same-org + self + owner-protection guards. (2026-07-15)
 - [x] **Backend: POST /auth/mfa/disable** — Password-confirmed MFA reset. (2026-07-15)
-- [x] **Backend: Lockdown check middleware** — requireAuth enforces org.lockdownActive, blocks non-GET writes with 403. PUT /api/org exempt. Unauthenticated routes unaffected. (2026-07-15)
+- [x] **Backend: Lockdown check middleware** — requireAuth enforces org.lockdownActive, blocks non-GET writes with 403. PUT /api/org exempt. (2026-07-15)
+- [x] **Backend: GET /api/plans** — Public endpoint, features derived from PLAN_DEFAULTS. (2026-07-15)
 - [x] **Frontend: Vite + Tailwind + ReactBits** — AnimatedBackground, GlowCard, FadeIn. (2026-07-15)
 - [x] **Frontend: Admin panel shell** — Layout, RequireRole, Dashboard, Users, Organization, Security, Devices, Billing. (2026-07-15)
 - [x] **Frontend: MFA setup page** — QR canvas, copy-to-clipboard, idle→verify→enabled. (2026-07-15)
@@ -29,24 +30,28 @@
 - [x] **Frontend: Global API timeout** — 10s default timeout on axios instance. (2026-07-15)
 - [x] **Frontend: Registration page** — Email/password/confirm form, POST /auth/register, auto-login redirect. (2026-07-15)
 - [x] **Frontend: SetPassword page** — /set-password with email+token URL params, auto-redirect on success. (2026-07-15)
-- [x] **Frontend E2E build verification** — 525 modules, 12 pages, 12 routes, 7 nav items, all build cleanly. (2026-07-15)
+- [x] **Frontend: Organization settings page** — Editable form: name, AI providers, branding, 14 flag toggles, lockdown/quota owner-only. Wired to PUT /api/org. (2026-07-15)
+- [x] **Frontend: Billing plan features** — Fetches /api/plans + /api/org, plan features synced to PLAN_DEFAULTS. (2026-07-15)
+- [x] **Frontend E2E build verification** — ~525 modules, 12 pages, 12 routes, 7 nav items, all build cleanly. (2026-07-15)
 - [x] **Desktop: Python project** — pystray tray icon, Fernet encrypted SQLite, API client, PyInstaller spec. (2026-07-15)
 - [x] **Desktop: Audio pipeline** — WakeListener (energy VAD), STT/TTS modules, VoicePipeline orchestrator. (2026-07-15)
 - [x] **Desktop: WebSocket command listener** — WSClient with auto-reconnect, restart/shutdown/update/status handlers. (2026-07-15)
 - [x] **Desktop: PyInstaller build** — DESKA.spec with console=False, 46MB binary at dist/DESKA. (2026-07-15)
-- [x] **Full project review** — 78/78 E2E tests, 13/13 API cross-references, 12/12 route-nav consistency. Fixed 3 bugs. (2026-07-15)
+- [x] **Desktop: Remove duplicate .spec** — Deleted incomplete `deska.spec`, kept `DESKA.spec`. (2026-07-15)
+- [x] **E2E: invite + set-password flow** — 7 tests: invite, set-password, login, /auth/me, reused token, double setup. (2026-07-15)
+- [x] **E2E: GET /api/plans** — 15 assertions: 4-plan array, fields, enterprise unlimited actions, lockdown bypass. (2026-07-15)
+- [x] **E2E: MFA login flow** — 12 assertions: re-enable MFA, login without/invalid/valid mfaToken. (2026-07-15)
+- [x] **E2E: company_admin lockdown 403** — Invite company_admin, set password, login, GET /auth/me confirms role, PUT /api/org lockdownActive/tokenQuotaStatus both return 403. (2026-07-16)
+- [x] **Final project review** — 134/134 E2E, frontend build OK, 17 backend modules OK, 42 tasks complete. (2026-07-16)
+- [x] **MongoDB Atlas production setup** — .env.example (10 vars, Atlas guide), production-ready db.js (pooling, timeouts, auto-detect Atlas, graceful shutdown). (2026-07-16)
+- [x] **GitHub Actions CI/CD** — `.github/workflows/ci.yml`: parallel backend E2E (134 tests, mongodb-memory-server) + frontend build on every push/PR. (2026-07-16)
+- [x] **Frontend production config** — VITE_API_URL env var in api.js, .env.production for deployed backend, .env.example docs, verified URL baked into dist bundle. (2026-07-16)
+- [x] **Backend Docker + Compose** — Dockerfile (node:20-slim, non-root, Node.js health check), .dockerignore, docker-compose.yml with env_file + anonymous node_modules volume. (2026-07-16)
+- [x] **Render deploy config** — render.yaml: Docker web service, oregon/free, /health, all 10 env vars (JWT_SECRET auto-generated), sync:false on secrets. (2026-07-16)
+- [x] **Commit lockfiles** — backend (2,589 lines) + frontend (2,847 lines) package-lock.json, CI switched to npm ci for deterministic builds + cache. (2026-07-16)
+- [x] **CI lint step** — New lint job: backend `node --check` on all .js files + frontend `oxlint`, runs parallel to tests/build. (2026-07-16)
+- [x] **README.md + deploy checklist** — 9-step pre-deploy guide: Atlas, JWT, AI keys, Stripe webhooks, CORS, env vars, frontend build, tests, CI. 3 deploy paths (Render/Docker/Manual) + full API table. (2026-07-16)
+- [x] **MongoDB in docker-compose** — mongo:7 service, named volume mongo-data, backend MONGODB_URI defaults to mongodb://mongo:27017/deska. (2026-07-16)
+- [x] **Fly.io deploy config** — fly.toml (ams region, port 4000, /health), root-level Dockerfile.fly for Fly's build context, 4 env vars + 6 secrets. (2026-07-16)
 
-## Next task
-- [x] **Desktop: Remove duplicate .spec** — Deleted incomplete `deska.spec` (32 lines), kept complete `DESKA.spec` (49 lines, console=False). (2026-07-15)
-- [x] **E2E: invite + set-password flow** — 7 new tests: invite, set-password, login, /auth/me, reused token (400), double setup (400). E2E: 94/94 passing. (2026-07-15)
-- [x] **Frontend: Organization settings page** — Rewritten from read-only to full editable form. Name, AI providers, branding (4 fields), 14 feature flag toggles, lockdown toggle + quota selector (owner-only). Wired to PUT /api/org with toast feedback. (2026-07-15)
-
-## Next task
-- [x] **Wire Billing page plan features to backend** — Created GET /api/plans (public, features derived from PLAN_DEFAULTS), Billing.jsx now fetches /plans + /org in parallel instead of hardcoded PLANS array. (2026-07-15)
-
-## Next task
-- [ ] **Final project review** — Run all checks, verify PROGRESS.md completeness, report status.
-- [ ] **Add E2E tests for invite + set-password flow** — Invite user, verify setupToken, set password, login.
-- [ ] **Add E2E tests for MFA setup/verify flow** — Setup → TOTP verify → login with MFA token.
-- [ ] **Organization settings frontend** — Wire PUT /api/org to the Organization page form.
-- [ ] **Add E2E test for lockdown + company_admin 403** — Company admin tries lockdownActive → 403.
+## Backlog

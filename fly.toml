@@ -1,0 +1,39 @@
+# ============================================================
+# DESKA Backend — Fly.io Configuration (fly.toml)
+# ============================================================
+# Deploy:
+#   fly launch   (first time — auto-detects this config)
+#   fly deploy   (subsequent deploys)
+#
+# MongoDB Atlas: create a free cluster at cloud.mongodb.com,
+# then set secrets via:
+#   fly secrets set MONGODB_URI="mongodb+srv://..." \
+#                   JWT_SECRET="..." \
+#                   DEEPSEEK_API_KEY="sk-..." \
+#                   GEMINI_API_KEY="..." \
+#                   STRIPE_SECRET_KEY="sk_..." \
+#                   STRIPE_WEBHOOK_SECRET="whsec_..."
+# ============================================================
+
+app = "deska-backend"
+primary_region = "ams"
+
+[build]
+  dockerfile = "Dockerfile.fly"
+
+[http_service]
+  internal_port = 4000
+  force_https = true
+
+  [[http_service.checks]]
+    path = "/health"
+    interval = "10s"
+    timeout = "5s"
+    grace_period = "15s"
+    method = "get"
+
+[env]
+  PORT = "4000"
+  CORS_ORIGIN = "https://deska-frontend.fly.dev"
+  JWT_EXPIRES_IN = "7d"
+  DEEPSEEK_BASE_URL = "https://api.deepseek.com/v1"
