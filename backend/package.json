@@ -1,0 +1,26 @@
+{
+  "name": "deska-backend",
+  "version": "1.0.0",
+  "description": "DESKA AI Desktop Agent — Node.js API backend",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "node --watch src/index.js"
+  },
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.1",
+    "helmet": "^8.0.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.9.2",
+    "multer": "^2.2.0",
+    "otplib": "^12.0.1",
+    "stripe": "^17.5.0",
+    "ws": "^8.18.0"
+  },
+  "devDependencies": {
+    "mongodb-memory-server": "^11.2.0"
+  }
+}

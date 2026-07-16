@@ -1,0 +1,8 @@
+node_modules/
+npm-debug.log*
+.env
+.env.local
+.cache/
+.git/
+.gitignore
+test-e2e.js

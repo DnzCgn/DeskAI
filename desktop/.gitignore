@@ -1,0 +1,7 @@
+.env
+__pycache__/
+data/
+dist/
+build/
+*.spec
+deska.spec

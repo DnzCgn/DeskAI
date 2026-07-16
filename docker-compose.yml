@@ -1,0 +1,39 @@
+services:
+  mongo:
+    image: mongo:7
+    container_name: deska-mongo
+    ports:
+      - '27017:27017'
+    volumes:
+      - mongo-data:/data/db
+    restart: unless-stopped
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: deska-backend
+    depends_on:
+      mongo:
+        condition: service_started
+    env_file:
+      - ./backend/.env
+    ports:
+      - '${PORT:-4000}:4000'
+    volumes:
+      - /app/node_modules
+    environment:
+      - PORT=${PORT:-4000}
+      - CORS_ORIGIN=${CORS_ORIGIN:-http://localhost:5173}
+      - MONGODB_URI=${MONGODB_URI:-mongodb://mongo:27017/deska}
+      - JWT_SECRET=${JWT_SECRET}
+      - JWT_EXPIRES_IN=${JWT_EXPIRES_IN:-7d}
+      - DEEPSEEK_API_KEY=${DEEPSEEK_API_KEY}
+      - DEEPSEEK_BASE_URL=${DEEPSEEK_BASE_URL:-https://api.deepseek.com/v1}
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+      - STRIPE_SECRET_KEY=${STRIPE_SECRET_KEY}
+      - STRIPE_WEBHOOK_SECRET=${STRIPE_WEBHOOK_SECRET}
+    restart: unless-stopped
+
+volumes:
+  mongo-data:

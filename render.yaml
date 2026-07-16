@@ -1,0 +1,58 @@
+# ============================================================
+# DESKA — Render Blueprint (render.yaml)
+# ============================================================
+# Deploy: connect your repo to Render, or run:
+#   render blueprint sync
+#
+# The backend deploys first. Once its .onrender.com URL is known,
+# update VITE_API_URL in the frontend service and redeploy.
+# ============================================================
+
+services:
+  - type: web
+    name: deska-backend
+    runtime: docker
+    dockerfileContext: ./backend
+    dockerfilePath: ./backend/Dockerfile
+    region: oregon
+    plan: free
+    healthCheckPath: /health
+    autoDeploy: true
+    envVars:
+      - key: PORT
+        value: '4000'
+      - key: CORS_ORIGIN
+        sync: false
+        value: https://deska-frontend.onrender.com
+      - key: MONGODB_URI
+        sync: false
+        value: mongodb+srv://<user>:<pass>@<cluster>.mongodb.net/deska
+      - key: JWT_SECRET
+        generateValue: true
+      - key: JWT_EXPIRES_IN
+        value: 7d
+      - key: DEEPSEEK_API_KEY
+        sync: false
+        value: sk-your-deepseek-api-key
+      - key: DEEPSEEK_BASE_URL
+        value: https://api.deepseek.com/v1
+      - key: GEMINI_API_KEY
+        sync: false
+        value: your-gemini-api-key
+      - key: STRIPE_SECRET_KEY
+        sync: false
+        value: sk_test_your-stripe-secret-key
+      - key: STRIPE_WEBHOOK_SECRET
+        sync: false
+        value: whsec_your-webhook-signing-secret
+
+  - type: static
+    name: deska-frontend
+    buildCommand: npm ci && npm run build
+    publishDir: dist
+    rootDir: frontend
+    autoDeploy: true
+    envVars:
+      - key: VITE_API_URL
+        sync: false
+        value: https://deska-backend.onrender.com/api
