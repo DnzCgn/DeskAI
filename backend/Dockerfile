@@ -3,6 +3,7 @@ FROM node:20-slim
 WORKDIR /app
 
 # ---- Dependencies ----
+RUN apt-get update && apt-get install -y g++ python3 && rm -rf /var/lib/apt/lists/*
 COPY package.json ./
 RUN npm install --omit=dev && npm cache clean --force
 

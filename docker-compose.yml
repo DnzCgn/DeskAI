@@ -6,6 +6,12 @@ services:
       - '27017:27017'
     volumes:
       - mongo-data:/data/db
+    healthcheck:
+      test: ['CMD', 'mongosh', '--eval', "db.runCommand('ping').ok", '--quiet']
+      interval: 5s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
     restart: unless-stopped
 
   backend:
@@ -15,7 +21,7 @@ services:
     container_name: deska-backend
     depends_on:
       mongo:
-        condition: service_started
+        condition: service_healthy
     env_file:
       - ./backend/.env
     ports:

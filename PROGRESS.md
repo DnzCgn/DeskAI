@@ -53,5 +53,8 @@
 - [x] **README.md + deploy checklist** — 9-step pre-deploy guide: Atlas, JWT, AI keys, Stripe webhooks, CORS, env vars, frontend build, tests, CI. 3 deploy paths (Render/Docker/Manual) + full API table. (2026-07-16)
 - [x] **MongoDB in docker-compose** — mongo:7 service, named volume mongo-data, backend MONGODB_URI defaults to mongodb://mongo:27017/deska. (2026-07-16)
 - [x] **Fly.io deploy config** — fly.toml (ams region, port 4000, /health), root-level Dockerfile.fly for Fly's build context, 4 env vars + 6 secrets. (2026-07-16)
+- [x] **MongoDB healthcheck** — mongosh ping healthcheck, backend depends_on service_healthy, zero-error first startup. (2026-07-16)
+- [x] **Desktop .exe build** — PyInstaller with DESKA.spec (console=False), 45MB binary, 13 Python files bundled, assets/icon.png. (2026-07-16)
+- [x] **Dockerfile bcrypt fix** — Added g++ + python3 build tools to both backend/Dockerfile and Dockerfile.fly for bcrypt native compilation on node:20-slim. (2026-07-16)
 
 ## Backlog
