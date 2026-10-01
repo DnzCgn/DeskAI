@@ -16,6 +16,11 @@
   <meta property="og:locale" content="tr_TR">
   <meta name="twitter:card" content="summary">
   <meta name="theme-color" content="#0D2418">
+  <link rel="icon" type="image/png" sizes="any" href="docs/UpdatedLogoDesk2.png">
+  <link rel="alternate" type="text/plain" href="robot.txt" title="Desk crawler policy (compatibility)">
+  <link rel="alternate" type="text/plain" href="robots.txt" title="Desk crawler policy">
+  <link rel="alternate" type="text/plain" href="llm.txt" title="Desk AI information">
+  <link rel="alternate" type="text/plain" href="llms.txt" title="Desk AI information index">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;800&display=swap" rel="stylesheet">
@@ -680,6 +685,10 @@
     var featuresDialog = document.getElementById('features-dialog');
     var featureContent = document.getElementById('feature-content');
     var fileIcons = { pdf: 'fa-file-pdf', doc: 'fa-file-word', docx: 'fa-file-word', xls: 'fa-file-excel', xlsx: 'fa-file-excel', ppt: 'fa-file-powerpoint', pptx: 'fa-file-powerpoint', png: 'fa-file-image', jpg: 'fa-file-image', jpeg: 'fa-file-image' };
+
+    function currentCopy() {
+      return translations[language] || {};
+    }
 
     function renderFeatures() {
       featureContent.replaceChildren();
