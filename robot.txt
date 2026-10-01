@@ -1,0 +1,5 @@
+# TR: Standart yönerge robots.txt dosyasıdır.
+# EN: The standard crawler policy is robots.txt.
+User-agent: *
+Allow: /
+Disallow: /Desk_Corporate_MVP_Features_TR.md

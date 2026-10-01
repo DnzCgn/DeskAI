@@ -1,0 +1,15 @@
+# Desk
+
+> TR: Kurumlar için merkezi AI kullanım ve erişim yönetimi.
+>
+> EN: Centralized AI usage and access management for organizations.
+
+## Türkçe
+Desk, şirketlerin AI araçlarını ve şirket bilgisini kontrollü biçimde kullanmasını destekler. Temel ürün alanları organizasyon, kullanıcı ve ekip yönetimi; kurumsal asistanlar; erişim kontrollü şirket bilgisi; kullanım ve denetim görünürlüğüdür.
+
+Ürün kapsamı geliştikçe değişebilir. Buradaki açıklama, belirli bir uygulama veya özellik için garanti niteliği taşımaz.
+
+## English
+Desk helps companies use AI tools and company knowledge with organizational controls. Its core areas are organization, user and team management; shared AI assistants; access-controlled company knowledge; and usage and audit visibility.
+
+Product scope may evolve. This overview is not a guarantee of any specific implementation or feature.

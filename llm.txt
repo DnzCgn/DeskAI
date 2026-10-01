@@ -1,0 +1,7 @@
+# Desk
+
+## Türkçe
+Desk, kurumların AI kullanımını ve erişim kurallarını tek merkezden yönetmesine yardımcı olan kurumsal bir AI çalışma platformudur. Temel kapsamı kullanıcı ve ekip yönetimi, kurumsal AI asistanları, şirket bilgisine kontrollü erişim ve kullanım görünürlüğüdür. Ayrıntılı ürün yetenekleri sürüme göre değişebilir.
+
+## English
+Desk is a corporate AI workspace that helps organizations centrally manage AI usage and access policies. Its core scope includes user and team management, shared AI assistants, controlled access to company knowledge, and usage visibility. Detailed capabilities may vary by release.

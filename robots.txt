@@ -1,0 +1,5 @@
+# TR: Herkese açık site sayfalarının taranmasına izin verilir.
+# EN: Crawling public site pages is allowed.
+User-agent: *
+Allow: /
+Disallow: /Desk_Corporate_MVP_Features_TR.md
